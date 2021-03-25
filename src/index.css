@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: 'IBM Plex Sans';
+  background-color: #0f0f0f;
+}
+
+.dossier {
+  max-width: 500px;
+  margin: 12% auto;
+  padding: 1%;
+  overflow: auto;
+  min-height: 300px;
+  border: 4px solid #fff;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.salute {
+  display: flex;
+  color: #fff;
+}
+
+.salute h1 {
+  color: #fff;
+}
+
+.moon-man {
+  display: flex;
+}
+
+.moon-man button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 2%;
+  font-size: 1.5rem;
+}
+
+.moon-man button:focus {
+  outline: none;
+}
+
+.bio {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.bio p {
+  color: #fff;
+}
+
+.tech {
+  display: flex;
+  margin-bottom: 2%;
+  color: #fff;
+  flex-direction: column;
+}
+
+.craft {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.craft h3 {
+  color: #fff;
+}
+
+.techBoxes {
+  display: flex;
+  margin-bottom: 2%;
+  color: #fff;
+  flex-direction: column;
+}
+
+.front-end {
+  display: flex;
+  margin: 0px;
+  border: 1px solid #fff;
+  flex-direction: row;
+}
+
+.back-end {
+  display: flex;
+  margin: 0px 0px 2% 0px;
+  border: 1px solid #fff;
+  flex-direction: row;
+}
+
+.one-box {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #fff;
+}
+
+.contacts {
+  display: flex;
+  margin-bottom: 2%;
+  color: #fff;
+}
