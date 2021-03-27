@@ -27,8 +27,8 @@ const FrontEnd = () => {
 
   return (
     <div className='front-end'>
-      {frontBoxes.map((box) => (
-        <OneBox logo={box.logo} text={box.text} percent={box.percent} />
+      {frontBoxes.map(({ logo, text, percent }) => (
+        <OneBox logo={logo} text={text} percent={percent} />
       ))}
     </div>
   );
