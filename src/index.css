@@ -6,18 +6,30 @@
   padding: 0px;
 }
 
+html {
+  --bgColor: #101010;
+  --fgColor: #fff;
+}
+
+html[class='light'] {
+  --bgColor: #f0f0f0;
+  --fgColor: #000;
+}
+
 body {
   font-family: 'IBM Plex Sans';
-  background-color: #0f0f0f;
+  background-color: var(--bgColor);
 }
 
 .dossier {
-  max-width: 500px;
-  margin: 12% auto;
-  padding: 1%;
+  max-width: 30rem;
+  width: 100%;
+  padding: 1.5rem;
   overflow: auto;
-  min-height: 300px;
-  border: 4px solid #fff;
+  min-height: 10rem;
+  border: 3px solid var(--fgColor);
+  overflow: visible;
+  margin: 10% auto;
 }
 
 .header {
@@ -29,27 +41,11 @@ body {
 
 .salute {
   display: flex;
-  color: #fff;
+  color: var(--fgColor);
 }
 
 .salute h1 {
-  color: #fff;
-}
-
-.moon-man {
-  display: flex;
-}
-
-.moon-man button {
-  background-color: transparent;
-  border: none;
-  margin: 0;
-  padding: 2%;
-  font-size: 1.5rem;
-}
-
-.moon-man button:focus {
-  outline: none;
+  color: var(--fgColor);
 }
 
 .bio {
@@ -58,13 +54,13 @@ body {
 }
 
 .bio p {
-  color: #fff;
+  color: var(--fgColor);
 }
 
 .tech {
   display: flex;
   margin-bottom: 2%;
-  color: #fff;
+  color: var(--fgColor);
   flex-direction: column;
 }
 
@@ -74,41 +70,76 @@ body {
 }
 
 .craft h3 {
-  color: #fff;
+  color: var(--fgColor);
 }
 
 .techBoxes {
   display: flex;
   margin-bottom: 2%;
-  color: #fff;
+  color: var(--fgColor);
   flex-direction: column;
 }
 
 .front-end {
   display: flex;
   margin: 0px;
-  border: 1px solid #fff;
   flex-direction: row;
 }
 
 .back-end {
   display: flex;
   margin: 0px;
-  border: 1px solid #fff;
   flex-direction: row;
 }
 
 .one-box {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.one-box .percent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  background-color: var(--bgColor);
+  border: 1px solid var(--fgColor);
+}
+
+.one-box .logo {
+  z-index: 1;
+  top: -3.5rem;
+  position: relative;
   display: flex;
   height: 3.5rem;
   width: 3.5rem;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #fff;
+  transition: top 0.3s;
+  background-color: var(--bgColor);
+  border: 1px solid var(--fgColor);
+  overflow: visible;
+  font-size: 2rem;
+}
+
+.front-end .one-box:hover .logo {
+  top: -7rem;
+}
+
+.back-end .one-box:hover .logo {
+  top: 0rem;
 }
 
 .contacts {
   display: flex;
   margin-bottom: 2%;
-  color: #fff;
+  color: var(--fgColor);
+}
+
+@media screen and (max-width: 650px) {
+  .dossier {
+    border: none;
+    box-shadow: none;
+  }
 }

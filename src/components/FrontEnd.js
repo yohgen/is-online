@@ -4,24 +4,24 @@ import OneBox from './OneBox';
 const FrontEnd = () => {
   const [frontBoxes, setFrontBoxes] = useState([
     {
-      logo: 'HT',
+      logo: 'devicon-html5-plain',
       text: 'HTML',
       percent: '100%',
     },
     {
-      logo: 'CS',
+      logo: 'devicon-css3-plain',
       text: 'CSS',
-      percent: '100%',
+      percent: '75%',
     },
     {
-      logo: 'JS',
+      logo: 'devicon-javascript-plain',
       text: 'JavaScript',
       percent: '100%',
     },
     {
-      logo: 'RE',
+      logo: 'devicon-react-original',
       text: 'React',
-      percent: '80%',
+      percent: '50%',
     },
   ]);
 
