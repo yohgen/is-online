@@ -5,23 +5,28 @@ const BackEnd = () => {
   const [backBoxes, setBackBoxes] = useState([
     {
       logo: 'devicon-nodejs-plain',
-      text: 'Node.js',
+      id: 1,
       percent: '100%',
     },
     {
       logo: 'devicon-express-original',
-      text: 'Express',
+      id: 2,
       percent: '100%',
     },
     {
       logo: 'devicon-mongodb-plain',
-      text: 'MongoDB',
+      id: 3,
       percent: '50%',
     },
     {
       logo: 'devicon-postgresql-plain',
-      text: 'PostgreSQL',
+      id: 4,
       percent: '75%',
+    },
+    {
+      logo: 'devicon-typescript-plain',
+      id: 5,
+      percent: '50%',
     },
   ]);
 
@@ -33,8 +38,8 @@ const BackEnd = () => {
 
   return (
     <div className='back-end'>
-      {backBoxes.map(({ logo, text, percent }) => (
-        <OneBox key={() => genKey(minId, maxId)} logo={logo} text={text} percent={percent} />
+      {backBoxes.map(({ logo, id, percent }) => (
+        <OneBox key={() => genKey(minId, maxId)} logo={logo} id={id} percent={percent} />
       ))}
     </div>
   );

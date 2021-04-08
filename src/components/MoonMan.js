@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Toggle from 'react-toggle';
-import 'react-toggle/style.css';
 
 const LIGHT_CLASS = 'light';
 
-const MoonMan = ({ onClick, moonSide, moonGlow }) => {
+const MoonMan = () => {
   const systemPrefersDark = useMediaQuery(
     {
       query: '(prefers-color-scheme: dark)',
@@ -26,14 +24,14 @@ const MoonMan = ({ onClick, moonSide, moonGlow }) => {
     }
   }, [isDark]);
 
+  const onClick = () => {
+    setIsDark(!isDark);
+  };
+
   return (
-    <Toggle
-      checked={isDark}
-      onChange={(event) => setIsDark(event.target.checked)}
-      className='moonMan'
-      icons={{ checked: '🌚', unchecked: '🌝' }}
-      aria-label='Light'
-    />
+    <div className='moon-man'>
+      <button onClick={onClick}>{isDark ? '🌝' : '🌚'}</button>
+    </div>
   );
 };
 

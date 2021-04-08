@@ -8,17 +8,37 @@
 
 html {
   --bgColor: #101010;
+  --bgColorSec: #000;
   --fgColor: #fff;
+  --fgColorSec: #7f7f7f;
+  font-size: 18px;
 }
 
 html[class='light'] {
-  --bgColor: #f0f0f0;
+  --bgColor: #e0e0e0;
+  --bgColorSec: #bbbbbb;
   --fgColor: #000;
+  --fgColorSec: #222222;
 }
 
 body {
   font-family: 'IBM Plex Sans';
   background-color: var(--bgColor);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .dossier {
@@ -36,7 +56,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 2%;
+  margin-bottom: 1rem;
 }
 
 .salute {
@@ -48,9 +68,31 @@ body {
   color: var(--fgColor);
 }
 
-.bio {
+.moon-man {
   display: flex;
-  margin-bottom: 2%;
+  justify-content: center;
+  align-items: center;
+}
+
+.moon-man button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  outline: none;
+  border: 2px solid var(--fgColor);
+  border-radius: 10px;
+  background-color: var(--bgColor);
+  font-size: 1.25rem;
+}
+
+.moon-man button:hover {
+  background-color: var(--bgColorSec);
+  border: 2px solid var(--fgColorSec);
+}
+
+.bio {
+  margin-bottom: 1rem;
 }
 
 .bio p {
@@ -59,14 +101,14 @@ body {
 
 .tech {
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1rem;
   color: var(--fgColor);
   flex-direction: column;
 }
 
 .craft {
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 0.5rem;
 }
 
 .craft h3 {
@@ -75,7 +117,7 @@ body {
 
 .techBoxes {
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1rem;
   color: var(--fgColor);
   flex-direction: column;
 }
@@ -84,17 +126,23 @@ body {
   display: flex;
   margin: 0px;
   flex-direction: row;
+  border-left: 1px solid var(--fgColor);
+  border-right: 1px solid var(--fgColor);
+  border-top: 1px solid var(--fgColor);
 }
 
 .back-end {
   display: flex;
   margin: 0px;
   flex-direction: row;
+  border-left: 1px solid var(--fgColor);
+  border-right: 1px solid var(--fgColor);
+  border-bottom: 1px solid var(--fgColor);
 }
 
 .one-box {
   height: 3.5rem;
-  width: 3.5rem;
+  flex: 1 1 0px;
 }
 
 .one-box .percent {
@@ -102,18 +150,16 @@ body {
   justify-content: center;
   align-items: center;
   height: 3.5rem;
-  width: 3.5rem;
   background-color: var(--bgColor);
   border: 1px solid var(--fgColor);
 }
 
 .one-box .logo {
-  z-index: 1;
+  z-index: 1000;
   top: -3.5rem;
   position: relative;
   display: flex;
   height: 3.5rem;
-  width: 3.5rem;
   justify-content: center;
   align-items: center;
   transition: top 0.3s;
@@ -125,10 +171,12 @@ body {
 
 .front-end .one-box:hover .logo {
   top: -7rem;
+  outline: 1px solid var(--fgColor);
 }
 
 .back-end .one-box:hover .logo {
   top: 0rem;
+  outline: 1px solid var(--fgColor);
 }
 
 .contacts {

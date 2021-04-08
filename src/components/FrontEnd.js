@@ -5,30 +5,40 @@ const FrontEnd = () => {
   const [frontBoxes, setFrontBoxes] = useState([
     {
       logo: 'devicon-html5-plain',
-      text: 'HTML',
+      id: 1,
       percent: '100%',
     },
     {
       logo: 'devicon-css3-plain',
-      text: 'CSS',
+      id: 2,
       percent: '75%',
     },
     {
       logo: 'devicon-javascript-plain',
-      text: 'JavaScript',
+      id: 3,
       percent: '100%',
     },
     {
       logo: 'devicon-react-original',
-      text: 'React',
+      id: 4,
       percent: '50%',
+    },
+    {
+      logo: 'devicon-redux-original',
+      id: 5,
+      percent: '0%',
+    },
+    {
+      logo: 'devicon-webpack-plain',
+      id: 6,
+      percent: '25%',
     },
   ]);
 
   return (
     <div className='front-end'>
-      {frontBoxes.map(({ logo, text, percent }) => (
-        <OneBox logo={logo} text={text} percent={percent} />
+      {frontBoxes.map(({ logo, id, percent }) => (
+        <OneBox logo={logo} id={id} percent={percent} />
       ))}
     </div>
   );

@@ -1,6 +1,6 @@
-const OneBox = ({ logo, text, percent }) => {
+const OneBox = ({ logo, id, percent }) => {
   return (
-    <div id={text} className='one-box'>
+    <div id={id} className='one-box'>
       <div className='percent'>{percent}</div>
       <div className='logo'>
         <i className={logo}></i>
