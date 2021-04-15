@@ -1,10 +1,10 @@
-import Craft from './Craft';
+import Heading from './Heading';
 import TechBoxes from './TechBoxes';
 
 const Tech = () => {
   return (
     <div className='tech'>
-      <Craft />
+      <Heading text='my trades:' identifier='craft' />
       <TechBoxes />
     </div>
   );
