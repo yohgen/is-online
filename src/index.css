@@ -181,8 +181,14 @@ p {
 
 .contacts {
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1rem;
   color: var(--fgColor);
+}
+
+.contacts-string h3 {
+  display: flex;
+  margin-bottom: 1rem;
+  
 }
 
 @media screen and (max-width: 650px) {
