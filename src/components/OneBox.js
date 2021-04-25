@@ -1,9 +1,9 @@
-const OneBox = ({ logo, id, percent }) => {
+const OneBox = ({ logo, id, text }) => {
   return (
     <div id={id} className='one-box'>
-      <div className='percent'>{percent}</div>
+      <div className='text'>{ Number.isInteger(text) ? text + '%' : text }</div>
       <div className='logo'>
-        <i className={logo}></i>
+        { logo && <i className={logo}></i> }
       </div>
     </div>
   );

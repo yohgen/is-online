@@ -145,7 +145,7 @@ p {
   flex: 1 1 0px;
 }
 
-.one-box .percent {
+.one-box .text {
   display: flex;
   justify-content: center;
   align-items: center;
