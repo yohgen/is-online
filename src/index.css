@@ -84,6 +84,8 @@ p {
   border-radius: 10px;
   background-color: var(--bgColor);
   font-size: 1.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .moon-man button:hover {
@@ -181,13 +183,94 @@ p {
 
 .contacts {
   display: flex;
+  flex-direction: column;
   margin-bottom: 1rem;
   color: var(--fgColor);
 }
 
-.contacts-string h3 {
+.contacts .contacts-string h3 {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contacts .cont-boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contacts .cont-boxes .cont-box {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--fgColor);
+  border-radius: 10px;
+  --fgColorParent: var(--fgColor);
+  --bgColorParent: var(--bgColor);
+}
+
+.contacts .cont-boxes .cont-box:hover {
+  border: 2px solid var(--fgColorSec);
+  background-color: var(--bgColorSec);
+  --fgColorParent: var(--fgColorSec);
+  --bgColorParent: var(--bgColorSec);
+}
+
+.contacts .cont-boxes .cont-box button {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+
+.contacts .cont-boxes .cont-box a {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.contacts .cont-boxes .cont-box .svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-right: 1px solid var(--fgColorParent);
+}
+
+.contacts .cont-boxes .cont-box .svg-icon svg {
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  height: inherit;
+  width: inherit;
+}
+
+.contacts .cont-boxes .cont-box .svg-icon svg path {
+  fill: var(--fgColor);
+}
+
+.contacts .cont-boxes .cont-box .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid var(--fgColorParent);
+  font-family: 'IBM Plex Sans';
+  font-size: 1rem;
+  color: var(--fgColor);
+  padding: 0.25rem;
 }
 
 @media screen and (max-width: 650px) {

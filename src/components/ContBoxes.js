@@ -10,12 +10,12 @@ const ContBoxes = () => {
     },
     {
       type: 'github',
-      text: '@yohgen',
+      text: 'github',
       link: 'https://github.com/yohgen',
     },
     {
       type: 'twitter',
-      text: '@enshightenment',
+      text: 'twitter',
       link: 'https://twitter.com/enshightenment',
     },
   ])
