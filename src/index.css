@@ -41,7 +41,7 @@ p {
   font-weight: 500;
 }
 
-.dossier {
+.card {
   max-width: 30rem;
   width: 100%;
   padding: 1.5rem;
@@ -57,15 +57,11 @@ p {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 1rem;
+  color: var(--fgColor);
 }
 
 .salute {
   display: flex;
-  color: var(--fgColor);
-}
-
-.salute h1 {
-  color: var(--fgColor);
 }
 
 .moon-man {
@@ -207,14 +203,16 @@ p {
   height: 2.5rem;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--fgColor);
+  border: 1px solid var(--fgColor);
   border-radius: 10px;
+  outline: none;
+  box-shadow: 0 0 0 1px var(--fgColor);
   --fgColorParent: var(--fgColor);
   --bgColorParent: var(--bgColor);
 }
 
 .contacts .cont-boxes .cont-box:hover {
-  border: 2px solid var(--fgColorSec);
+  border: 1px solid var(--fgColorSec);
   background-color: var(--bgColorSec);
   --fgColorParent: var(--fgColorSec);
   --bgColorParent: var(--bgColorSec);
@@ -243,17 +241,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.5rem;
-  width: 2.5rem;
   border-right: 1px solid var(--fgColorParent);
 }
 
 .contacts .cont-boxes .cont-box .svg-icon svg {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  height: inherit;
-  width: inherit;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .contacts .cont-boxes .cont-box .svg-icon svg path {
@@ -273,9 +266,158 @@ p {
   padding: 0.25rem;
 }
 
+.email-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-form label {
+  font-size: 1rem;
+  color: var(--fgColor);
+  margin-bottom: 0.25rem;
+}
+
+.email-form input {
+  height: 2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--bgColor);
+  background-color: var(--fgColor);
+  border-radius: none;
+  outline: none;
+  color: var(--bgColor);
+}
+
+.email-form input:focus {
+  border: 2px solid var(--fgColorSec);
+}
+
+.email-form input:focus:invalid {
+  border: 2px solid #f80021;
+}
+
+.email-form input:valid {
+  border: 2px solid #00bef8;
+}
+
+.email-form textarea {
+  height: 16rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--bgColor);
+  background-color: var(--fgColor);
+  border-radius: none;
+  outline: none;
+  line-height: 1.25rem;
+  resize: none;
+  color: var(--bgColor);
+}
+
+.email-form textarea:focus {
+  border: 2px solid var(--fgColorSec);
+}
+
+.email-form textarea:focus:invalid {
+  border: 2px solid #f80021;
+}
+
+.email-form textarea:valid {
+  border: 2px solid #00bef8;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--bgColor);
+  opacity: 0.65;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: var(--bgColor);
+  opacity: 0.65;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: var(--bgColor);
+  opacity: 0.65;
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: var(--bgColor);
+  opacity: 0.65;
+}
+
+.email-form .bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.email-form .bottom-buttons button {
+  border: 2px solid var(--fgColor);
+  height: 2.5rem;
+  padding: 0.4rem;
+  border-radius: 10px;
+  background-color: var(--bgColor);
+  color: var(--fgColor);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  --fgColorParent: var(--fgColor);
+  --bgColorParent: var(--bgColor);
+}
+
+.email-form .bottom-buttons button:hover {
+  border: 2px solid var(--fgColorSec);
+  background-color: var(--bgColorSec);
+  --fgColorParent: var(--fgColorSec);
+  --bgColorParent: var(--bgColorSec);
+}
+
+.email-form .bottom-buttons .svg-icon {
+  border-right: 1px solid var(--fgColorParent);
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form .bottom-buttons .svg-icon svg {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: var(--fgColor);
+}
+
+.email-form .bottom-buttons .link {
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-left: 1px solid var(--fgColorParent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form .bottom-buttons .form-back .svg-icon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.email-form .bottom-buttons .form-back .svg-icon path,
+circle {
+  stroke: var(--fgColor);
+}
+
 @media screen and (max-width: 650px) {
-  .dossier {
+  .card {
     border: none;
-    box-shadow: none;
   }
 }
