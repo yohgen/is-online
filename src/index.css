@@ -91,6 +91,17 @@ p {
   border: 3px solid var(--fgColorSec);
 }
 
+.moon-man button .svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moon-man button .svg-icon svg {
+  color: var(--fgColor);
+  fill: var(--fgColor);
+}
+
 .bio {
   margin-bottom: 1rem;
 }

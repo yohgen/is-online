@@ -2,6 +2,8 @@ import Email from './Email';
 import Twitter from './Twitter';
 import GitHub from './GitHub';
 import BackArrow from './BackArrow';
+import Sun from './Sun';
+import Moon from './Moon';
 
 const switcheroo = (type) => {
   switch (type) {
@@ -13,6 +15,10 @@ const switcheroo = (type) => {
       return <GitHub />;
     case 'backArrow':
       return <BackArrow />;
+    case 'sun':
+      return <Sun />;
+    case 'moon':
+      return <Moon />;
     default:
       return '';
   }

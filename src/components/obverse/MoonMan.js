@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import SVG from '../svg/SVG';
 
 const LIGHT_CLASS = 'light';
 
@@ -30,7 +31,9 @@ const MoonMan = () => {
 
   return (
     <div className='moon-man'>
-      <button onClick={onClick}>{isDark ? '🌝' : '🌚'}</button>
+      <button onClick={onClick}>
+        <SVG type={isDark ? 'sun' : 'moon'} />
+      </button>
     </div>
   );
 };
