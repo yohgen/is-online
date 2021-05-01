@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ContBox from './ContBox';
 
 const ContBoxes = () => {
-  const [ contacts, setContacts ] = useState([
+  const [contacts, setContacts] = useState([
     {
       type: 'email',
       text: 'jorgentau@gmail.com',
@@ -18,15 +18,15 @@ const ContBoxes = () => {
       text: 'twitter',
       link: 'https://twitter.com/enshightenment',
     },
-  ])
+  ]);
 
   return (
     <div className='cont-boxes'>
-      {contacts.map(({ type, text, link }) => ( 
-        <ContBox type={type} text={text} link={link} /> 
+      {contacts.map((cont) => (
+        <ContBox {...cont} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default ContBoxes;

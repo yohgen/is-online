@@ -1,16 +1,22 @@
-import Header from './components/Header';
-import Bio from './components/Bio';
-import Tech from './components/Tech';
-import Contacts from './components/Contacts';
+import { useContext } from 'react';
+import { StoreContext } from './utils/store';
+import Obverse from './components/Obverse';
+import Reverse from './components/Reverse';
+import ReactCardFlip from 'react-card-flip';
 
 function App() {
+  const [isFlipped, setIsFlipped] = useContext(StoreContext).flipCard;
+
   return (
-    <div className='dossier'>
-      <Header />
-      <Bio />
-      <Tech />
-      <Contacts />
-    </div>
+    <ReactCardFlip
+      isFlipped={isFlipped}
+      flipDirection='horizontal'
+      flipSpeedBackToFront='0.4'
+      flipSpeedFrontToBack='0.4'
+    >
+      <Obverse />
+      <Reverse />
+    </ReactCardFlip>
   );
 }
 
