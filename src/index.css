@@ -24,6 +24,10 @@ html[class='light'] {
 body {
   font-family: 'IBM Plex Sans';
   background-color: var(--bgColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 h1 {
@@ -48,8 +52,6 @@ p {
   overflow: auto;
   min-height: 10rem;
   border: 3px solid var(--fgColor);
-  overflow: visible;
-  margin: 10% auto;
 }
 
 .header {
@@ -416,7 +418,9 @@ circle {
   stroke: var(--fgColor);
 }
 
-@media screen and (max-width: 650px) {
+@media screen and
+(max-width: 700px),
+(max-height: 750px) {
   .card {
     border: none;
   }
