@@ -27,7 +27,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding-top: 25vh;
 }
 
 h1 {
@@ -432,6 +432,10 @@ circle {
 @media screen and
 (max-width: 700px),
 (max-height: 750px) {
+  body {
+    padding-top: 0;
+  }
+
   .card {
     border: none;
   }

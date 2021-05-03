@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ContBox from './ContBox';
 
 const ContBoxes = () => {
-  const [contacts, setContacts] = useState([
+  const [contacts] = useState([
     {
       type: 'email',
       text: 'jorgentau@gmail.com',

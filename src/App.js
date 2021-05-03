@@ -5,7 +5,7 @@ import Reverse from './components/Reverse';
 import ReactCardFlip from 'react-card-flip';
 
 function App() {
-  const [isFlipped, setIsFlipped] = useContext(StoreContext).flipCard;
+  const [ isFlipped ] = useContext(StoreContext).flipCard;
 
   return (
     <ReactCardFlip
