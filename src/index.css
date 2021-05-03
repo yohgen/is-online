@@ -6,6 +6,11 @@
   padding: 0px;
 }
 
+#root {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
 html {
   --bgColor: #101010;
   --bgColorSec: #000;
@@ -58,6 +63,7 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1rem;
   color: var(--fgColor);
 }
@@ -70,6 +76,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 1.5rem;
 }
 
 .moon-man button {
@@ -197,6 +204,12 @@ p {
   color: var(--fgColor);
 }
 
+.contacts::before,
+.contacts::after {
+  content: '';
+  margin: auto;
+}
+
 .contacts .contacts-string h3 {
   display: flex;
   margin-bottom: 0.5rem;
@@ -205,11 +218,12 @@ p {
 .contacts .cont-boxes {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .contacts .cont-boxes .cont-box {
-  margin: 0px;
+  margin: 0 1rem 2rem;
   padding: 0px;
   display: flex;
   flex-direction: row;
@@ -277,6 +291,12 @@ p {
   font-size: 1rem;
   color: var(--fgColor);
   padding: 0.25rem;
+}
+
+.email-form form::before,
+.email-form form::after {
+  content: '';
+  margin: auto;
 }
 
 .email-form form {
@@ -366,8 +386,8 @@ textarea::-ms-input-placeholder {
 
 .email-form .bottom-buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .email-form .bottom-buttons button {
@@ -382,8 +402,8 @@ textarea::-ms-input-placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin: 0px;
   padding: 0px;
+  margin: 0 1rem 2rem;
   --fgColorParent: var(--fgColor);
   --bgColorParent: var(--bgColor);
 }
