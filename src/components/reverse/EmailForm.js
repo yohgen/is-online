@@ -7,11 +7,11 @@ const textAreaPH =
 
 const encode = (data = {}) => {
   let result = Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join("&");
-  
-  return result; 
-}
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+
+  return result;
+};
 
 const EmailForm = () => {
   const [email, setEmail] = useState('');
@@ -21,13 +21,17 @@ const EmailForm = () => {
     event.preventDefault();
 
     axios
-      .post('/api/sendmail', encode({ 
-        'form-name': 'email-form',
-        'email': email,
-        'msg': msg,
-      }), {
-        'headers': { 'Content-Type': 'application/x-www-form-urlencoded' }
-      })
+      .post(
+        '/api/sendmail',
+        encode({
+          'form-name': 'email-form',
+          email: email,
+          msg: msg,
+        }),
+        {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        }
+      )
       .then(({ data }) => {
         if (data.result === 'success') {
           console.log('[AXIOS POST]: Success');
