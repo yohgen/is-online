@@ -10,9 +10,10 @@ exports.handler = (event) => {
     auth: {
       type: 'OAuth2',
       user: process.env.NM_LOGIN,
-      clientId: process.env.CLIENT_SECRET,
-      refreshToken: process.env.REFRESH_TOKEN,
-      accessToken: process.env.ACCESS_TOKEN,
+      clientId: process.env.NM_CLIENT_ID,
+      clientSecret: process.env.NM_CLIENT_SECRET,
+      refreshToken: process.env.NM_REFRESH_TOKEN,
+      accessToken: process.env.NM_ACCESS_TOKEN,
     },
   });
 
