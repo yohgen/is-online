@@ -8,7 +8,7 @@ const TechBoxes = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/users/1/tech')
+      .get('/api/user?tech=1')
       .then(({ data }) => {
         const frontEnd = data.filter((ele) => ele.front_end && ele.percent > 0);
         const backEnd = data.filter((ele) => !ele.front_end && ele.percent > 0);
@@ -26,7 +26,7 @@ const TechBoxes = () => {
         }
       })
       .catch((err) => console.log(err));
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (

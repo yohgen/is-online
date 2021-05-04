@@ -449,9 +449,7 @@ circle {
   stroke: var(--fgColor);
 }
 
-@media screen and
-(max-width: 700px),
-(max-height: 750px) {
+@media screen and (max-width: 700px), (max-height: 750px) {
   body {
     padding-top: 0;
   }

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { StoreContext } from '../../utils/store';
 import SVG from '../svg/SVG';
 
-const ContBoxWrapper = ({ type, text, link }) => {
+const ContBoxWrapper = ({ type, provider, link }) => {
   const [isFlipped, setIsFlipped] = useContext(StoreContext).flipCard;
 
   if (type === 'email') {
@@ -20,7 +20,7 @@ const ContBoxWrapper = ({ type, text, link }) => {
     return (
       <a href={link} target='_blank' rel='noopener noreferrer'>
         <SVG type={type} />
-        <span className='link'>{text}</span>
+        <span className='link'>{provider}</span>
       </a>
     );
   }

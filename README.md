@@ -1,3 +1,3 @@
 # My personal website
 
-Made with 🌚 and React
+Made with 🌚 and React, hosted on Netlify

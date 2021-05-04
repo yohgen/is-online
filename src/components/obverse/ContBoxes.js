@@ -1,24 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ContBox from './ContBox';
 
 const ContBoxes = () => {
-  const [contacts] = useState([
+  const [contacts, setContacts] = useState([
     {
-      type: 'email',
-      text: 'jorgentau@gmail.com',
-      link: 'mailto:jorgentau@gmail.com',
-    },
-    {
-      type: 'github',
-      text: 'github',
-      link: 'https://github.com/yohgen',
-    },
-    {
-      type: 'twitter',
-      text: 'twitter',
-      link: 'https://twitter.com/enshightenment',
-    },
+      type: 'RickRoll',
+      provider: 'YouTube',
+      link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    }
   ]);
+
+  useEffect(() => {
+    axios
+      .get('/api/user?contacts=1')
+      .then(({ data }) => setContacts(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className='cont-boxes'>
