@@ -6,7 +6,7 @@ const Salute = () => {
 
   useEffect(() => {
     axios
-      .get('/api/user?id=1')
+      .get('/api/user?info=1')
       .then(({ data }) => {
         if (typeof data.name === 'string') {
           setAuteur(data.name.toLowerCase());

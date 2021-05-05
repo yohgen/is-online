@@ -26,9 +26,7 @@ const ContBoxes = () => {
 
   return (
     <div className='cont-boxes'>
-      {contacts && contacts.map((cont) => (
-        <ContBox key={cont.provider} {...cont} />
-      ))}
+      {contacts && contacts.map((cont) => <ContBox key={cont.provider} {...cont} />)}
     </div>
   );
 };

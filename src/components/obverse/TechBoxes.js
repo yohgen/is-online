@@ -13,13 +13,13 @@ const TechBoxes = () => {
         if (Array.isArray(data)) {
           const frontEnd = data.filter((ele) => ele.front_end && ele.percent > 0);
           const backEnd = data.filter((ele) => !ele.front_end && ele.percent > 0);
-  
+
           if (feTech.length % 2 !== 0) {
             setFETech([...frontEnd, { text: 'etc.' }]);
           } else {
             setFETech(frontEnd);
           }
-  
+
           if (beTech.length % 2 !== 0) {
             setBETech([...backEnd, { text: 'etc.' }]);
           } else {
