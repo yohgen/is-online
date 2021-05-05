@@ -14,14 +14,20 @@ const ContBoxes = () => {
   useEffect(() => {
     axios
       .get('/api/user?contacts=1')
-      .then(({ data }) => setContacts(data))
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setContacts(data);
+        } else {
+          console.log('[AXIOS GET] Wrong data type: ' + typeof data.name);
+        }
+      })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className='cont-boxes'>
-      {contacts.map((cont) => (
-        <ContBox {...cont} />
+      {contacts && contacts.map((cont) => (
+        <ContBox key={cont.provider} {...cont} />
       ))}
     </div>
   );

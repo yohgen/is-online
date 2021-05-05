@@ -49,7 +49,7 @@ const EmailForm = () => {
   return (
     <div className='email-form'>
       <form name='email-form' method='POST' onSubmit={handleFormSubmit} netlify>
-        <label for='email'>email (required)</label>
+        <label htmlFor='email'>email (required)</label>
         <input
           id='email'
           type='email'
@@ -58,7 +58,7 @@ const EmailForm = () => {
           onChange={(event) => setEmail(event.target.value)}
           required
         />
-        <label for='msg'>message (required)</label>
+        <label htmlFor='msg'>message (required)</label>
         <textarea
           id='msg'
           spellCheck={false}
