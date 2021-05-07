@@ -14,11 +14,11 @@ const ContBoxes = () => {
   useEffect(() => {
     axios
       .get('/api/user?contacts=1')
-      .then(({ data }) => {
-        if (Array.isArray(data)) {
-          setContacts(data);
+      .then(({ data: { contacts } }) => {
+        if (Array.isArray(contacts)) {
+          setContacts(contacts);
         } else {
-          console.log('[AXIOS GET] Wrong data type: ' + typeof data.name);
+          console.log('[AXIOS GET] Wrong data type: ' + typeof contacts);
         }
       })
       .catch((err) => console.log(err));

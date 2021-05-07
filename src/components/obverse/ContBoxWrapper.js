@@ -12,14 +12,14 @@ const ContBoxWrapper = ({ type, provider, link }) => {
           setIsFlipped(!isFlipped);
         }}
       >
-        <SVG type={type} />
+        <SVG type={provider} />
         <span className='link'>email me</span>
       </button>
     );
   } else {
     return (
       <a href={link} target='_blank' rel='noopener noreferrer'>
-        <SVG type={type} />
+        <SVG type={provider} />
         <span className='link'>{provider}</span>
       </a>
     );

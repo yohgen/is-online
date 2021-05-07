@@ -7,11 +7,11 @@ import Moon from './Moon';
 
 const switcheroo = (type) => {
   switch (type) {
-    case 'email':
+    case 'Gmail':
       return <Email />;
-    case 'twitter':
+    case 'Twitter':
       return <Twitter />;
-    case 'github':
+    case 'GitHub':
       return <GitHub />;
     case 'backArrow':
       return <BackArrow />;

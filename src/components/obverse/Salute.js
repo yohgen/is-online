@@ -8,10 +8,10 @@ const Salute = () => {
     axios
       .get('/api/user?info=1')
       .then(({ data }) => {
-        if (typeof data.name === 'string') {
-          setAuteur(data.name.toLowerCase());
+        if (typeof data.fullName === 'string') {
+          setAuteur(data.fullName.toLowerCase());
         } else {
-          console.log('[AXIOS GET] Wrong data type: ' + typeof data.name);
+          console.log('[AXIOS GET] Wrong data type: ' + typeof data.fullName);
         }
       })
       .catch((err) => console.log('[AXIOS GET]', err));

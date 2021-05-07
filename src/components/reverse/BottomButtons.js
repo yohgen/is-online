@@ -8,7 +8,7 @@ const BottomButtons = () => {
   return (
     <div className='bottom-buttons'>
       <button className='form-submit' type='submit'>
-        <SVG type='email' />
+        <SVG type='Gmail' />
         <span className='link'>submit</span>
       </button>
       <button className='form-back' type='button' onClick={() => setIsFlipped(!isFlipped)}>

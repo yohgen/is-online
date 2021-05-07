@@ -9,10 +9,10 @@ const TechBoxes = () => {
   useEffect(() => {
     axios
       .get('/api/user?tech=1')
-      .then(({ data }) => {
-        if (Array.isArray(data)) {
-          const frontEnd = data.filter((ele) => ele.front_end && ele.percent > 0);
-          const backEnd = data.filter((ele) => !ele.front_end && ele.percent > 0);
+      .then(({ data: { tech } }) => {
+        if (Array.isArray(tech)) {
+          const frontEnd = tech.filter((ele) => ele.frontEnd && ele.percent > 0);
+          const backEnd = tech.filter((ele) => !ele.frontEnd && ele.percent > 0);
 
           if (feTech.length % 2 !== 0) {
             setFETech([...frontEnd, { text: 'etc.' }]);
@@ -26,7 +26,7 @@ const TechBoxes = () => {
             setBETech(backEnd);
           }
         } else {
-          console.log('[AXIOS GET] Wrong data type: ' + typeof data.name);
+          console.log('[AXIOS GET] Wrong data type: ' + typeof tech);
         }
       })
       .catch((err) => console.log(err));

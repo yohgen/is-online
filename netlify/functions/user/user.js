@@ -1,6 +1,8 @@
 exports.handler = async (event) => {
   const queryParams = event.queryStringParameters;
 
+  let res = {};
+
   if (queryParams.info == 1) {
     res = {
       id: 1,
