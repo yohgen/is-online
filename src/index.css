@@ -32,7 +32,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 25vh;
+  padding-top: 15vh;
 }
 
 h1 {
@@ -449,7 +449,106 @@ circle {
   stroke: var(--fgColor);
 }
 
-@media screen and (max-width: 700px), (max-height: 750px) {
+.email-form .modal-bg::before {
+  content: '';
+  max-width: 30rem;
+  width: 100%;
+  height: 100%;
+  top: 0rem;
+  left: 0rem;
+  position: fixed;
+  background-color: var(--fgColor);
+  filter: opacity(0.66);
+}
+
+.email-form .modal-bg {
+  z-index: 10000;
+  max-width: 30rem;
+  width: 100%;
+  height: 100%;
+  top: 0rem;
+  left: 0rem;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form .modal-fg {
+  max-width: 15rem;
+  width: 100%;
+  border: 4px solid var(--fgColorSec);
+  background-color: var(--bgColor);
+  filter: opacity(1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.email-form .modal-fg .modal-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1.5rem;
+}
+
+.email-form .modal-fg p {
+  margin: 1rem 0;
+  color: var(--fgColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form .modal-fg .svg-icon {
+  margin: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form .modal-fg svg {
+  stroke-width: 2px;
+  stroke-linecap: round;
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: none;
+}
+
+.email-form .modal-fg .loader {
+  animation: rotate 2s linear infinite;
+  stroke: var(--fgColor);
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.email-form .modal-fg button {
+  border: 2px solid var(--fgColor);
+  height: 2rem;
+  padding: 0.4rem;
+  border-radius: 10px;
+  background-color: var(--bgColor);
+  color: var(--fgColor);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.email-form .modal-fg button:hover {
+  border: 2px solid var(--fgColorSec);
+  background-color: var(--bgColorSec);
+}
+
+@media screen and (max-width: 700px) {
   body {
     padding-top: 0;
   }

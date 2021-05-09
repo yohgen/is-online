@@ -4,6 +4,9 @@ import GitHub from './GitHub';
 import BackArrow from './BackArrow';
 import Sun from './Sun';
 import Moon from './Moon';
+import Check from './Check';
+import Uncheck from './Uncheck';
+import Loader from './Loader';
 
 const switcheroo = (type) => {
   switch (type) {
@@ -19,6 +22,12 @@ const switcheroo = (type) => {
       return <Sun />;
     case 'moon':
       return <Moon />;
+    case 'check':
+      return <Check />;
+    case 'uncheck':
+      return <Uncheck />;
+    case 'loader':
+      return <Loader />;
     default:
       return '';
   }
