@@ -20,7 +20,7 @@ const ContBoxWrapper = ({ type, provider, link }) => {
     return (
       <a href={link} target='_blank' rel='noopener noreferrer'>
         <SVG type={provider} />
-        <span className='link'>{provider}</span>
+        <span className='link'>{provider.toLowerCase()}</span>
       </a>
     );
   }

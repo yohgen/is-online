@@ -17,6 +17,7 @@ html {
   --fgColor: #fff;
   --fgColorSec: #7f7f7f;
   font-size: 18px;
+  font-family: 'IBM Plex Sans';
 }
 
 html[class='light'] {
@@ -27,12 +28,12 @@ html[class='light'] {
 }
 
 body {
-  font-family: 'IBM Plex Sans';
+  max-height: 100vh;
+  max-width: 100vw;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   background-color: var(--bgColor);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15vh;
 }
 
 h1 {
@@ -50,13 +51,29 @@ p {
   font-weight: 500;
 }
 
+.full-page {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
+}
+
+.content {
+  flex: 1 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .card {
-  max-width: 30rem;
+  max-width: 31rem;
   width: 100%;
   padding: 1.5rem;
   overflow: auto;
   min-height: 10rem;
-  border: 3px solid var(--fgColor);
+  border: 5px solid var(--fgColor);
 }
 
 .header {
@@ -70,6 +87,11 @@ p {
 
 .salute {
   display: flex;
+}
+
+.salute #auteur:hover {
+  transition: text-shadow 0.25s linear;
+  text-shadow: 1px 1px 1px #f80021, -1px -1px 1px #00bef8;
 }
 
 .moon-man {
@@ -230,16 +252,15 @@ p {
   height: 2.5rem;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--fgColor);
+  border: 3px solid var(--fgColor);
   border-radius: 10px;
   outline: none;
-  box-shadow: 0 0 0 1px var(--fgColor);
   --fgColorParent: var(--fgColor);
   --bgColorParent: var(--bgColor);
 }
 
 .contacts .cont-boxes .cont-box:hover {
-  border: 1px solid var(--fgColorSec);
+  border: 3px solid var(--fgColorSec);
   background-color: var(--bgColorSec);
   --fgColorParent: var(--fgColorSec);
   --bgColorParent: var(--bgColorSec);
@@ -315,7 +336,7 @@ p {
   padding: 0.5rem;
   font-size: 1rem;
   margin-bottom: 1rem;
-  border: 2px solid var(--bgColor);
+  border: 3px solid var(--bgColor);
   background-color: var(--fgColor);
   border-radius: none;
   outline: none;
@@ -323,15 +344,15 @@ p {
 }
 
 .email-form input:focus {
-  border: 2px solid var(--fgColorSec);
+  border: 3px solid var(--fgColorSec);
 }
 
 .email-form input:focus:invalid {
-  border: 2px solid #f80021;
+  border: 3px solid #f80021;
 }
 
 .email-form input:valid {
-  border: 2px solid #00bef8;
+  border: 3px solid #00bef8;
 }
 
 .email-form textarea {
@@ -339,7 +360,7 @@ p {
   padding: 0.5rem;
   font-size: 1rem;
   margin-bottom: 1rem;
-  border: 2px solid var(--bgColor);
+  border: 3px solid var(--bgColor);
   background-color: var(--fgColor);
   border-radius: none;
   outline: none;
@@ -349,15 +370,15 @@ p {
 }
 
 .email-form textarea:focus {
-  border: 2px solid var(--fgColorSec);
+  border: 3px solid var(--fgColorSec);
 }
 
 .email-form textarea:focus:invalid {
-  border: 2px solid #f80021;
+  border: 3px solid #f80021;
 }
 
 .email-form textarea:valid {
-  border: 2px solid #00bef8;
+  border: 3px solid #00bef8;
 }
 
 input::placeholder,
@@ -391,7 +412,7 @@ textarea::-ms-input-placeholder {
 }
 
 .email-form .bottom-buttons button {
-  border: 2px solid var(--fgColor);
+  border: 3px solid var(--fgColor);
   height: 2.5rem;
   padding: 0.4rem;
   border-radius: 10px;
@@ -409,7 +430,7 @@ textarea::-ms-input-placeholder {
 }
 
 .email-form .bottom-buttons button:hover {
-  border: 2px solid var(--fgColorSec);
+  border: 3px solid var(--fgColorSec);
   background-color: var(--bgColorSec);
   --fgColorParent: var(--fgColorSec);
   --bgColorParent: var(--bgColorSec);
@@ -451,7 +472,7 @@ circle {
 
 .email-form .modal-bg::before {
   content: '';
-  max-width: 30rem;
+  max-width: 31rem;
   width: 100%;
   height: 100%;
   top: 0rem;
@@ -463,7 +484,7 @@ circle {
 
 .email-form .modal-bg {
   z-index: 10000;
-  max-width: 30rem;
+  max-width: 31rem;
   width: 100%;
   height: 100%;
   top: 0rem;
@@ -477,7 +498,7 @@ circle {
 .email-form .modal-fg {
   max-width: 15rem;
   width: 100%;
-  border: 4px solid var(--fgColorSec);
+  border: 5px solid var(--fgColorSec);
   background-color: var(--bgColor);
   filter: opacity(1);
   display: flex;
@@ -530,7 +551,7 @@ circle {
 }
 
 .email-form .modal-fg button {
-  border: 2px solid var(--fgColor);
+  border: 3px solid var(--fgColor);
   height: 2rem;
   padding: 0.4rem;
   border-radius: 10px;
@@ -548,8 +569,37 @@ circle {
   background-color: var(--bgColorSec);
 }
 
-@media screen and (max-width: 700px) {
-  body {
+footer {
+  height: 3rem;
+  max-width: 25rem;
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 1;
+  border-top: 2px solid var(--fgColorSec);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer p {
+  color: var(--fgColorSec);
+  font-size: 14px;
+  text-align: center;
+  padding: 0 5%;
+}
+
+footer p a {
+  color: var(--fgColorSec);
+  text-decoration: underline solid var(--fgColorSec) 1px;
+}
+
+footer p a:hover {
+  transition: text-shadow 0.25s linear;
+  text-shadow: 1px 1px 1px #f80021, -1px -1px 1px #00bef8;
+}
+
+@media screen and (max-width: 650px) {
+  .full-page {
     padding-top: 0;
   }
 

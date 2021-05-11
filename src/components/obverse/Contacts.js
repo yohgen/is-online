@@ -4,7 +4,7 @@ import ContBoxes from './ContBoxes';
 const Contacts = () => {
   return (
     <div className='contacts'>
-      <Heading text='contactz' identifier='contacts-string' />
+      <Heading text='contacts' identifier='contacts-string' />
       <ContBoxes />
     </div>
   );

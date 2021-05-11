@@ -1,63 +1,29 @@
 const nodemailer = require('nodemailer');
-const mailOptions = require('./nmOptions');
+const querystring = require('querystring');
+const transportOptions = require('./transportOptions');
+const formHTML = require('./mailHTML');
 
-exports.handler = (event) => {
-  let data = event.body;
+exports.handler = async (event, context, callback) => {
+  let { email, msg } = querystring.parse(event.body);
 
-  let transporter = nodemailer.createTransport(mailOptions);
+  let transporter = nodemailer.createTransport(transportOptions);
 
-  let successResponse = {
-    statusCode: 200,
-    body: JSON.stringify({
-      result: 'success',
-    }),
-  };
-
-  let failResponse = {
-    statusCode: 200,
-    body: JSON.stringify({
-      result: 'failure',
-    }),
-  };
-
-  let feedBack = () => {
-    transporter.sendMail(
-      {
-        from: process.env.NM_USER,
-        to: data.email,
-        subject: '[JØRGEN TAU] Message delivery successful',
-        html: `
-        <h3>Your email has been successfully delivered!</h3>
-        <h3>A copy of your message:</h3>
-        <p>${data.msg}</p>
-        `,
-      },
-      (err, info) => {
-        if (err) {
-          return failResponse;
-        } else {
-          return successResponse;
-        }
-      }
-    );
-  };
-
-  transporter.sendMail(
-    {
-      from: process.env.NM_USER,
-      to: process.env.NM_ADMIN,
-      subject: '[IS-ONLINE] Message recieved',
-      html: `
-      <h3>Email from [${data.email}]</h3>
-      <p>${data.msg}</p>
-      `,
-    },
-    (err, info) => {
-      if (err) {
-        return failResponse;
-      } else {
-        feedBack();
-      }
-    }
-  );
+  await transporter.sendMail({
+    from: `TAU <${process.env.NM_USER}>`,
+    to: `${process.env.NM_ADMIN}, ${email}`,
+    subject: '[Jørgen Tau] Message recieved',
+    html: formHTML(email, msg),
+  })
+    .then(() => {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ result: 'success' }),
+      });
+    })
+    .catch(() => {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ result: 'failure' }),
+      });
+    });
 };

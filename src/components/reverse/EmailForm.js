@@ -78,7 +78,7 @@ const EmailForm = () => {
   return (
     <div className='email-form'>
       {modal.isShown && <Modal setModal={setModal} modal={modal} />}
-      <form name='email-form' method='POST' onSubmit={handleFormSubmit} netlify>
+      <form name='email-form' method='POST' onSubmit={handleFormSubmit}>
         <label htmlFor='email'>email (required)</label>
         <input
           id='email'
@@ -97,7 +97,7 @@ const EmailForm = () => {
           value={msg}
           onChange={(event) => setMsg(event.target.value)}
           placeholder={textAreaPH}
-          minLength='35'
+          minLength='5'
           maxLength='420'
           required
         />
