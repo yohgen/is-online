@@ -117,12 +117,12 @@ exports.handler = async (event) => {
         {
           type: 'social',
           provider: 'Twitter',
-          link: 'twitter.com/enshightenment',
+          link: 'https://twitter.com/enshightenment',
         },
         {
           type: 'code',
           provider: 'GitHub',
-          link: 'github.com/yohgen',
+          link: 'https://github.com/yohgen',
         },
       ],
     });
