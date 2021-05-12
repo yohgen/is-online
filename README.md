@@ -36,7 +36,7 @@ NB: `netlify dev` and `npm start` are mutually exclusive (since `netlify dev` ru
 
 In order to hide sensetive information, specifically values related to the functioning of Nodemailer, environment variables are used, which are stored privately on Netlify:
 
-```json
+```
 {
   host: NM_HOST, # SMTP server address OR IP
                  # (if address couldn't be resolved)
