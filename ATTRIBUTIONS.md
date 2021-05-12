@@ -49,3 +49,8 @@ to open source.
 
 - Copyright (c) 2020 Contra <yo@contra.io>
 - [MIT License](https://github.com/contra/react-responsive/blob/master/LICENSE)
+
+### [responsive-html-email-template](https://github.com/leemunroe/responsive-html-email-template)
+
+- Copyright (c) [2013] [Lee Munroe]
+- [MIT License](https://github.com/leemunroe/responsive-html-email-template/blob/master/license.txt)
