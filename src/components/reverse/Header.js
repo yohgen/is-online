@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
-  const [ isWideEnough, setIsWideEnough ] = useState(true);
+  const [isWideEnough, setIsWideEnough] = useState(true);
 
-  useMediaQuery(
-    { query: 'screen and (max-width: 350px)' },
-    undefined,
-    (isWide) => { setIsWideEnough(!isWide) }
-  )
+  useMediaQuery({ query: 'screen and (max-width: 350px)' }, undefined, (isWide) => {
+    setIsWideEnough(!isWide);
+  });
 
   return (
     <div className='header'>

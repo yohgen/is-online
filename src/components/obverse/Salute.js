@@ -4,13 +4,11 @@ import { useMediaQuery } from 'react-responsive';
 
 const Salute = () => {
   const [auteur, setAuteur] = useState('john doe');
-  const [ sayHello, setSayHello ] = useState(true);
+  const [sayHello, setSayHello] = useState(true);
 
-  useMediaQuery(
-    { query: 'screen and (max-width: 450px)' },
-    undefined,
-    (isWide) => { setSayHello(!isWide) }
-  );
+  useMediaQuery({ query: 'screen and (max-width: 450px)' }, undefined, (isWide) => {
+    setSayHello(!isWide);
+  });
 
   useEffect(() => {
     axios
@@ -28,7 +26,8 @@ const Salute = () => {
   return (
     <div className='salute'>
       <h1>
-        {sayHello && "hi, it's "}<span id='auteur'>{auteur}</span>
+        {sayHello && "hi, it's "}
+        <span id='auteur'>{auteur}</span>
       </h1>
     </div>
   );

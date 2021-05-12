@@ -8,12 +8,13 @@ exports.handler = async (event, context, callback) => {
 
   let transporter = nodemailer.createTransport(transportOptions);
 
-  await transporter.sendMail({
-    from: `TAU <${process.env.NM_USER}>`,
-    to: `${process.env.NM_ADMIN}, ${email}`,
-    subject: '[Jørgen Tau] Message recieved',
-    html: formHTML(email, msg),
-  })
+  await transporter
+    .sendMail({
+      from: `TAU <${process.env.NM_USER}>`,
+      to: `${process.env.NM_ADMIN}, ${email}`,
+      subject: '[Jørgen Tau] Message recieved',
+      html: formHTML(email, msg),
+    })
     .then(() => {
       callback(null, {
         statusCode: 200,
