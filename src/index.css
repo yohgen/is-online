@@ -192,7 +192,7 @@ p {
   height: 3.5rem;
   background-color: var(--bgColor);
   border: 1px solid var(--fgColor);
-  font-size: 24clepx;
+  font-size: 24px;
 }
 
 .one-box .logo {
