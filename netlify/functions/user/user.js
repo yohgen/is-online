@@ -16,7 +16,7 @@ exports.handler = async (event) => {
       tech: [
         {
           name: 'HTML5',
-          percent: 100,
+          backSide: '☕',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-html5-plain',
@@ -24,7 +24,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'CSS3',
-          percent: 75,
+          backSide: '☕',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-css3-plain',
@@ -32,7 +32,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'JavaScript',
-          percent: 75,
+          backSide: '🔥',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-javascript-plain',
@@ -40,7 +40,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'React',
-          percent: 50,
+          backSide: '🔥',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-react-original',
@@ -48,7 +48,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'Redux',
-          percent: 0,
+          backSide: '👎',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-redux-original',
@@ -56,7 +56,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'webpack',
-          percent: 0,
+          backSide: '👎',
           frontEnd: true,
           devicon: true,
           deviconClass: 'devicon-webpack-plain',
@@ -64,7 +64,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'Node.js',
-          percent: 75,
+          backSide: '🔥',
           frontEnd: false,
           devicon: true,
           deviconClass: 'devicon-nodejs-plain',
@@ -72,7 +72,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'Express.js',
-          percent: 75,
+          backSide: '☕',
           frontEnd: false,
           devicon: true,
           deviconClass: 'devicon-express-original',
@@ -80,7 +80,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'MongoDB',
-          percent: 50,
+          backSide: '☕',
           frontEnd: false,
           devicon: true,
           deviconClass: 'devicon-mongodb-plain',
@@ -88,7 +88,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'PostgreSQL',
-          percent: 75,
+          backSide: '🔥',
           frontEnd: false,
           devicon: true,
           deviconClass: 'devicon-postgresql-plain',
@@ -96,7 +96,7 @@ exports.handler = async (event) => {
         },
         {
           name: 'TypeScript',
-          percent: 0,
+          backSide: '👎',
           frontEnd: false,
           devicon: true,
           deviconClass: 'devicon-typescript-plain',

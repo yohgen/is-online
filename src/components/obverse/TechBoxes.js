@@ -11,8 +11,8 @@ const TechBoxes = () => {
       .get('/api/user?tech=1')
       .then(({ data: { tech } }) => {
         if (Array.isArray(tech)) {
-          const frontEnd = tech.filter((ele) => ele.frontEnd && ele.percent > 0);
-          const backEnd = tech.filter((ele) => !ele.frontEnd && ele.percent > 0);
+          const frontEnd = tech.filter((ele) => ele.frontEnd && ele.backSide !== '👎');
+          const backEnd = tech.filter((ele) => !ele.frontEnd && ele.backSide !== '👎');
 
           if (feTech.length % 2 !== 0) {
             setFETech([...frontEnd, { text: 'etc.' }]);
