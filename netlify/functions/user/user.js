@@ -117,7 +117,7 @@ exports.handler = async (event) => {
         {
           type: 'social',
           provider: 'Twitter',
-          link: 'https://twitter.com/enshightenment',
+          link: 'https://twitter.com/tauIsOnline',
         },
         {
           type: 'code',
