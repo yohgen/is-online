@@ -275,6 +275,7 @@ p {
   align-items: center;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .contacts .cont-boxes .cont-box a {
@@ -284,6 +285,7 @@ p {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .contacts .cont-boxes .cont-box .svg-icon {
@@ -291,15 +293,15 @@ p {
   justify-content: center;
   align-items: center;
   border-right: 1px solid var(--fgColorParent);
+  width: 2.75rem;
+  height: 2.5rem;
 }
 
 .contacts .cont-boxes .cont-box .svg-icon svg {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.contacts .cont-boxes .cont-box .svg-icon svg path {
-  fill: var(--fgColor);
+  color: var(--fgColor);
+  fill: var(--bgColorParent);
+  width: 24px;
+  height: 24px;
 }
 
 .contacts .cont-boxes .cont-box .link {
@@ -428,6 +430,7 @@ textarea::-ms-input-placeholder {
   margin: 0 1rem 2rem;
   --fgColorParent: var(--fgColor);
   --bgColorParent: var(--bgColor);
+  cursor: pointer;
 }
 
 .email-form .bottom-buttons button:hover {
@@ -440,16 +443,17 @@ textarea::-ms-input-placeholder {
 .email-form .bottom-buttons .svg-icon {
   border-right: 1px solid var(--fgColorParent);
   height: 2.5rem;
-  width: 2.5rem;
+  width: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .email-form .bottom-buttons .svg-icon svg {
-  height: 2.5rem;
-  width: 2.5rem;
-  fill: var(--fgColor);
+  height: 24px;
+  width: 24px;
+  color: var(--fgColor);
+  fill: var(--bgColorParent);
 }
 
 .email-form .bottom-buttons .link {

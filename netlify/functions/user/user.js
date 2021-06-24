@@ -117,12 +117,27 @@ exports.handler = async (event) => {
         {
           type: 'social',
           provider: 'Twitter',
-          link: 'https://twitter.com/tauIsOnline',
+          link: 'https://twitter.com/netlenin',
         },
         {
           type: 'code',
           provider: 'GitHub',
           link: 'https://github.com/yohgen',
+        },
+        {
+          type: 'work',
+          provider: 'LinkedIn',
+          link: 'https://linkedin.com/in/yohgen'
+        },
+        {
+          type: 'work',
+          provider: 'CV/RU',
+          link: '/resume-ru.pdf',
+        },
+        {
+          type: 'work',
+          provider: 'CV/EN',
+          link: '/resume-en.pdf',
         },
       ],
     });

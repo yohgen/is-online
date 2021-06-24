@@ -1,23 +1,16 @@
-import Email from './Email';
-import Twitter from './Twitter';
-import GitHub from './GitHub';
-import BackArrow from './BackArrow';
-import Sun from './Sun';
-import Moon from './Moon';
-import Check from './Check';
-import Uncheck from './Uncheck';
-import Loader from './Loader';
+import { Mail, Twitter, GitHub, Linkedin, FileText, ArrowLeftCircle, Sun, Moon, Loader, X, Check } from 'react-feather';
 
 const switcheroo = (type) => {
+  type = type.replace(/[^\S\r\n]\w+/, '');
   switch (type) {
     case 'Gmail':
-      return <Email />;
+      return <Mail />;
     case 'Twitter':
       return <Twitter />;
     case 'GitHub':
       return <GitHub />;
     case 'backArrow':
-      return <BackArrow />;
+      return <ArrowLeftCircle />;
     case 'sun':
       return <Sun />;
     case 'moon':
@@ -25,9 +18,15 @@ const switcheroo = (type) => {
     case 'check':
       return <Check />;
     case 'uncheck':
-      return <Uncheck />;
+      return <X />;
     case 'loader':
       return <Loader />;
+    case 'LinkedIn':
+      return <Linkedin />;
+    case 'CV/EN':
+      return <FileText />;
+    case 'CV/RU':
+      return <FileText />;
     default:
       return '';
   }
