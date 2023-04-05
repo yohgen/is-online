@@ -1,0 +1,27 @@
+---
+type Props = {
+  creator: string,
+  createdAt: string | Date,
+  updatedAt?: string | Date,
+  section: string,
+  tags?: string[],
+};
+
+const { creator, createdAt, updatedAt, section, tags } = Astro.props;
+---
+
+<!-- Article -->
+<meta property='article:author' content={creator} />
+<meta
+  property='article:published_time'
+  content={new Date(createdAt).toISOString()}
+/>
+{updatedAt && (<meta
+  property='article:modified_time'
+  content={new Date(updatedAt).toISOString()}
+/>)}
+<meta property='article:section' content={section} />
+{tags?.length && tags.map((tag) => (<meta
+  property='article:tag'
+  content={tag}
+/>))}

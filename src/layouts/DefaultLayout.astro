@@ -1,0 +1,33 @@
+---
+import Body from './body/Body.astro';
+import Head from './head/Head.astro';
+import type { Props as HeadProps } from './head/Head.astro';
+import type { Props as BodyProps } from './body/Body.astro';
+
+export type Props = Pick<HeadProps, 'title' | 'description' | 'openGraph' | 'twitter' | 'image'> & BodyProps & { children: any, slot?: string };
+
+const {
+	title,
+	description,
+	openGraph,
+	twitter,
+	image,
+	...props
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+	<Head
+		title={title}
+		description={description}
+		openGraph={openGraph}
+		twitter={twitter}
+		image={image}
+	>
+		<slot name='head' />
+	</Head>
+	<Body {...props}>
+		<slot />
+	</Body>
+</html>
