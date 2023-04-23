@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import pwa from '@vite-pwa/astro';
 
@@ -11,9 +10,8 @@ export default defineConfig({
   site: 'https://yohgen.netlify.app',
   integrations: [
     mdx(),
-    sitemap(),
-    solid(),
     tailwind(),
+    sitemap(),
     pwa({
       injectRegister: 'script',
       registerType: 'autoUpdate',
