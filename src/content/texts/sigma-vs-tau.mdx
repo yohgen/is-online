@@ -1,0 +1,54 @@
+---
+title: "PSA: Web Design and Web Dev are not the same"
+ogTitle: 'GeoCities Is Dead, Long Live NeoCities'
+description: "Minimal Web Development is not the same as minimal Web Design, and this confusion needs to end"
+image: 'old-deep-web.png'
+imageAlt: 'An example of epilepsy-inducing Web 1.0 web page'
+createdAt: '2023-08-08'
+section: 'software'
+tags:
+  - 'internet'
+  - 'web dev'
+  - 'web design'
+---
+
+As JavaScript engines have become faster, and devices more performant, the resource allowance within which web developers can implement their ideas has grown. This growth of the JS ecosystem, however, appears to be a constant source of frustration for web developers themselves, and the rest of the software world. Recently this frustration has started to boil over, with [articles](https://idlewords.com/talks/website_obesity.htm), [videos](https://www.youtube.com/watch?v=cvDyQUpaFf4), and even [specific technologies](https://htmx.org) lashing out at the (alleged) fact that a lot of web sites are "overengineered" and "bloated", wasting developers' and users' time and money (space is overrated, anyway).
+
+Coming up with meticulously compiled and analyzed stats for whether this description of the modern web is true, and whether the backlash is significant, is out of scope of this post (and my current skills, alas): what appears to be loud on the Internet, can in fact be fringe IRL. What I will say is that I do agree that it's noble and prudent to keep your systems simple: "An idiot admires complexity, a genius admires semplicity" as late Terry Davis put it (and it sucks to be an idiot, right?). After all, simpler web pages load faster, use less bandwidth, less bug-prone - all the things that any developer and user could desire. Therefore, I think it wouldn't be unreasonable to say that any web developer has a "duty" to try their best to deliver a web page that hits all three marks.
+
+## The Problem
+
+What I also began to notice is a mix-up of two related, but ultimately separate fields: web development and web design. Sure, they do overlap a lot (especially when employers can hire one "fullstacker" for the price of "backender", "frontender", and designer (one developer in three persons)), but this overlap has been erroneously confused for sameness. Specifically, in their pursuit of web *development* minimalism, some also argue for web *design* minimalism as well. There's probably no bigger example (and champion) of such a view than a certain [motherfucking website](https://motherfuckingwebsite.com). I do recognize that it's an over-the-top satire, but the message is still there, and I have an issue with it.
+
+Of course, a lot of websites could benefit from "JS fasting" and "HTML diet" (especially corporate websites for developers (I'm looking at you, Google Developer Console)), but it should not hurt the web design itself. If you asked me "how much code do we need to display a wall of text", I would agree that client-side React with hooks for every breakpoint and, say, client-side text tokenizer for code highlighting, is an overkill (you should prerender all this stuff in the backend, anyway), but it doesn't mean that breakpoints and code highlighting should be removed altogather, for the sole purpose of preserving [sacred simplicity](https://en.wikipedia.org/wiki/Jan_Hus#Execution). 
+
+## The Good Old Times
+
+It may be sudden, but do you remember [GeoCities](https://en.wikipedia.org/wiki/GeoCities)? I don't, I was too young back then. But I did learn about it later, when the web was becoming increasingly ad-ridden and corporate, and I was amazed at the way people interacted with the web, it was the opposite of boring, streamlined (and later [Memphis-ized](https://en.wikipedia.org/wiki/Corporate_Memphis)) web experience. To be sure, by modern standards GeoCities experience is far from perfect: borderline epilepsy-inducing datamoshed gifs (that also weigh a tonne, and take time to load even today), confusing interfaces, unreadable texts (both due to lack of proper contrast and useful content), overall menace to a11y, but it was author's form of personal expression. To put in another way, if you want to be present on the Internet today, you create Instagram or Twitter (presently X) accounts, which have the same structure for every user. But back in the day, people have strung togather bits and pieces of HTML/CSS/JS, and the structure was fully under they control. The web **was** the social network in itself.
+
+## The Solution
+
+But I'm getting ahead of myself. I may have overcorrected by designating GeoCities as a web paragon, but my main point is that nothing in web design (and by extension, web expression) should be limited by our quest for minimal web development. Why not combine the two and make them work togather? Take commonly used, but not inherently necessary feature such as outside click detection (for dropdown menus). If you are a React developer, you may be tempted to just install an [npm package](https://github.com/zhaluza/react-detect-click-outside) that provides a hook to do just that, and if that's all JS you need, it will add a tonne of JS (including React itself), which is undesirable. Solid is lighter, and doesn't have such a packages, but provides an easy solution to implement yourself in [the tutorial](https://www.solidjs.com/tutorial/bindings_directives). This is better, but can be improved. Here's how you can do it without any dependencies:
+
+```ts title="clickOutside.ts"
+const button = document.querySelector('#button')!;
+const dropdown = document.querySelector('#dropdown')!;
+
+button.addEventListener('click', () => dropdown.classList.toggle('.hidden'));
+
+document.body.addEventListener('click', (event: MouseEvent) => {
+  const target = event.target as Node;
+  if (button.contains(target) || dropdown.contains(target)) return;
+  dropdown.classList.remove('.hidden');
+});
+```
+
+And you are golden! Similar code powers the dropdown menu you can see at the top by clicking on `NAV` button (it's visible only on smaller screens).
+
+## The Conclusion
+
+Web dev minimalism should not tread on the creative-interactive aspect of the Internet: make pages (especially your personal pages) as filled with (simingly) useless funcationality as your passion desires or design-sense requires. Don't be discouraged by the fact that it won't win an [Awwward](https://www.awwwards.com). At the very least, you are guaranteed to learn something new if you go outside your comfort zone.
+
+### The Link
+
+Hero image is a screenshot from this [website](https://webpage1990colourised.neocities.org)

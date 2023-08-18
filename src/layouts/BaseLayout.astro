@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+import BaseHead, { type Props as BaseHeadProps } from './BaseHead/BaseHead.astro';
+import Header from './Header/Header.astro';
+import Footer from './Footer/Footer.astro';
+
+export type Props = BaseHeadProps & { class?: HTMLAttributes<'body'>['class'] };
+
+const { class: className, ...props } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<BaseHead {...props} />
+	</head>
+	<body
+		class:list={['min-w-screen flex min-h-screen flex-col items-center justify-between bg-black text-white scrollbar', className]}
+	>
+		<Header />
+			<slot />
+		<Footer />
+	</body>
+</html>
+
+<script>
+	console.log(
+		'%c 👁️ Whomst do I spy with my little eye? \n 🔗 https://github.com/yohgen/is-online ',
+		'background-color: black; color: white; font-size: 16px;',
+	);
+</script>

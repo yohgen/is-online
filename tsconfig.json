@@ -1,13 +1,17 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
+    "allowJs": true,
     "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "exactOptionalPropertyTypes": false,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "baseUrl": ".",
     "paths": {
-      "~/*": [ "./src/*"],
-      "consts": ["./consts"]
+      "~/*": ["./src/*"],
+      "!config": ["./config.js"],
+      "!integrations": ["./integrations/*"]
     }
   }
 }

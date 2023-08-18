@@ -1,0 +1,63 @@
+---
+import { getBasename } from "~/shared/server";
+import { FULL_TITLE, TITLE, TWITTER } from "!config";
+
+import ImageTags from "./ImageTags.astro";
+import ArticleTags, { Props as ArticleTagsProps } from "./ArticleTags.astro";
+import GlobalStyle from "./GlobalStyle.astro";
+
+type BaseProps = { title: string, description: string, canonicalUrl?: URL | null };
+type WebsiteProps = BaseProps & { type?: "website" };
+type ArticleProps = BaseProps & { type?: "article" } & ArticleTagsProps;
+export type Props = WebsiteProps | ArticleProps;
+
+const {
+  description,
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site),
+  type = "website",
+  ...article
+} = Astro.props as ArticleProps;
+
+const title = Astro.props.title === FULL_TITLE
+  ? Astro.props.title
+  : `${Astro.props.title} | ${TITLE}`;
+
+const basename = getBasename(Astro.url) ?? 'index';
+---
+
+<!-- Primary -->
+<meta charset="utf-8" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<meta name="generator" content={Astro.generator} />
+<link rel="author" type="text/plain" href="/humans.txt" />
+{canonicalUrl && (<link rel="canonical" href={canonicalUrl} />)}
+
+<!-- Icons -->
+<meta name="theme-color" content="#000000" />
+<meta name="msapplication-TileColor" content="#000000" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico" />
+<link rel="mask-icon" type="image/svg+xml" href="/safari.svg" color="#ea5924" />
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-180x.png" />
+<link rel="manifest" type="application/manifest+json" href="/manifest.json" />
+
+<!-- OpenGraph -->
+<meta property="og:type" content={type} />
+<meta property="og:locale" content="en" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={FULL_TITLE} />
+{canonicalUrl && (<meta property="og:url" content={canonicalUrl} />)}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content={TWITTER.handle} />
+<meta property="twitter:creator" content={TWITTER.handle} />
+
+<ImageTags filename={basename} text={Astro.props.title} />
+{type === 'article' && (<ArticleTags {...article} />)}
+<!-- Rest -->
+<GlobalStyle />

@@ -1,6 +1,6 @@
 /* AUTHOR */
 Your boy Jo/rgen Tau (He/Him)! 
-Afraid to die and see my loved ones dead
+Afraid to die fr
 GitHub: https://github.com/yohgen
 Twitter: https://twitter.com/netlenin
 Personal: https://yohgen.netlify.app
@@ -12,6 +12,5 @@ Folks at https://humanstxt.org
 Standards: HTML5, CSS3, ES6+
 Technologies:
   Astro (https://astro.build),
-  Solid (https://www.solidjs.com),
   Tailwind (https://tailwindcss.com),
-  et cetera...
+  and others...

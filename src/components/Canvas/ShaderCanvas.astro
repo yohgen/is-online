@@ -1,0 +1,150 @@
+---
+export type Props = { vert: string; frag: string; class?: string; alt?: string };
+
+const { vert, frag, class: className, alt } = Astro.props;
+---
+
+<canvas
+  data-vert={vert}
+  data-frag={frag}
+  class:list={['cursor-grab touch-none', className]}
+  role={alt ? 'img' : null}
+  aria-label={alt}
+/>
+
+<script>
+  import { AmbientLight, HemisphereLight, Mesh, PlaneGeometry, ShaderMaterial, SpotLight } from 'three';
+  import { EffectPass, RenderPass, SelectiveBloomEffect, VignetteEffect } from 'postprocessing';
+
+  import {
+    camera,
+    canvas,
+    composer,
+    grabState,
+    imageDimState,
+    initScene,
+    timeState,
+    tweenState,
+    viewState,
+  } from '~/shared/canvas';
+  import { moveTowards, normMinus, normZero } from '~/shared/client';
+
+  const scene = await initScene();
+  scene.add(camera);
+
+  const bloom = new SelectiveBloomEffect(scene, camera, {
+    mipmapBlur: true,
+    luminanceThreshold: 0,
+    luminanceSmoothing: 0,
+    intensity: 6,
+  });
+  const vignette = new VignetteEffect({ eskil: false, offset: 0.1, darkness: 1.1 });
+
+  const renderPass = new RenderPass(scene, camera);
+  const effectPass = new EffectPass(camera, bloom, vignette);
+  composer.addPass(renderPass);
+  composer.addPass(effectPass);
+
+  const imageDim = imageDimState.get();
+  const uniforms = { u_time: { value: 0 } };
+  const screenMesh = new Mesh(
+    new PlaneGeometry(imageDim.width, imageDim.height),
+    new ShaderMaterial({
+      uniforms,
+      vertexShader: canvas.dataset.vert!,
+      fragmentShader: canvas.dataset.frag!,
+    })
+  );
+  bloom.selection.add(screenMesh);
+  scene.add(screenMesh);
+
+  const ambLight = new AmbientLight(0xffffff, 1);
+  scene.add(ambLight);
+  const hemiLight = new HemisphereLight(0xffffff, 0xf97316, 1);
+  scene.add(hemiLight);
+  const spotLight = new SpotLight(0x6366f1, 1, 10000, Math.PI * 0.5, 1, 0);
+  spotLight.position.y = imageDim.height;
+  spotLight.position.z = imageDim.height * 0.5;
+  spotLight.lookAt(0, 0, 0);
+  scene.add(spotLight);
+
+  const renderView = (time: DOMHighResTimeStamp) => {
+    uniforms.u_time.value = time / 1000;
+    const deltaTime = time - timeState.get();
+    timeState.set(time);
+
+    const view = viewState.get();
+    const tween = tweenState.get();
+
+    camera.aspect = view.aspect;
+    camera.position.z = view.distance.cover;
+    tween.endPosition.z = view.distance.cover;
+    camera.lookAt(0, 0, 0);
+
+    camera.updateProjectionMatrix();
+    composer.setSize(view.width, view.height, false);
+    composer.render(deltaTime);
+  };
+  viewState.sub(() => void requestAnimationFrame(renderView));
+  viewState.trigger();
+
+  const MOVE_SPEED_X = 0.008;
+  const MOVE_SPEED_Y = 0.008;
+  const MOVE_SPEED_Z = 0.002;
+  const renderCamera = (time: DOMHighResTimeStamp) => {
+    const grab = grabState.get();
+    if (!grab.isActive) return;
+    const view = viewState.get();
+
+    const posEndX = 2 * -normMinus(grab.pointerPosition.x, view.width);
+    const posEndY = 3 * normZero(grab.pointerPosition.y, view.height);
+    const posEndZ = view.distance.contain * 2;
+
+    if (
+      camera.position.x === posEndX &&
+      camera.position.y === posEndY &&
+      camera.position.z === posEndZ
+    ) {
+      uniforms.u_time.value = time / 1000;
+      composer.render(time - timeState.get());
+      timeState.set(time);
+
+      requestAnimationFrame(renderCamera);
+      return;
+    }
+
+    uniforms.u_time.value = time / 1000;
+    const deltaTime = time - timeState.get();
+    timeState.set(time);
+
+    camera.position.x = moveTowards(camera.position.x, posEndX, MOVE_SPEED_X * deltaTime);
+    camera.position.y = moveTowards(camera.position.y, posEndY, MOVE_SPEED_Y * deltaTime);
+    camera.position.z = moveTowards(camera.position.z, posEndZ, MOVE_SPEED_Z * deltaTime);
+    camera.lookAt(0, 0, 0);
+
+    composer.render(deltaTime);
+
+    requestAnimationFrame(renderCamera);
+  };
+  grabState.sub(() => void requestAnimationFrame(renderCamera));
+
+  const S_IN_MS = 1000;
+  const TWEEN_DUR = S_IN_MS * 0.5;
+  const renderTween = (time: DOMHighResTimeStamp) => {
+    const tween = tweenState.get();
+    if (!tween.isActive) return;
+
+    const elapsedTime = time - tween.startTime;
+    const weight = elapsedTime / TWEEN_DUR;
+    camera.position.lerpVectors(tween.startPosition, tween.endPosition, weight);
+    camera.lookAt(0, 0, 0);
+
+    uniforms.u_time.value = time / 1000;
+    composer.render(time - timeState.get());
+    timeState.set(time);
+
+    if (weight < 1) requestAnimationFrame(renderTween);
+    else tween.isActive = false;
+  };
+  tweenState.sub(() => void requestAnimationFrame(renderTween));
+</script>

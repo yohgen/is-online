@@ -1,4 +1,11 @@
 /// <reference path="../.astro/types.d.ts" />
-/// <reference types="astro/client" />
-/// <reference types="vite-plugin-pwa/info" />
-/// <reference types="vite-plugin-pwa/client" />
+/// <reference types="@astrojs/image/client" />
+
+interface ImportMetaEnv {
+  ROOT_DIR: string;
+  APP_VERSION: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

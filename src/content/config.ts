@@ -1,28 +1,40 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z as zod } from 'astro:content';
 
-import { CREATOR } from 'consts';
+import { getFromDate } from '~/shared/server';
+import { FULL_TITLE } from '!config';
 
-const posts = defineCollection({
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		creator: z.string().default(CREATOR),
-		createdAt: z
-			.string()
-			.or(z.date())
-			.transform((value) => new Date(value)),
-		updatedAt: z
-			.string()
-			.or(z.date())
-			.optional()
-			.transform((value) => value ? new Date(value) : undefined),
-		section: z.string(),
-		tags: z.array(z.string()).optional(),
-		image: z.object({
-			src: z.string(),
-			alt: z.string(),
-		}).optional(),
-	}),
+const MIN = 3;
+
+const texts = defineCollection({
+  schema: zod.object({
+    title: zod.string().min(MIN),
+    description: zod.string().min(MIN),
+    sticky: zod.boolean().default(false),
+    image: zod.string().min(MIN),
+    imageAlt: zod.string().min(MIN),
+    author: zod.string().default(FULL_TITLE),
+    ogTitle: zod.string().min(MIN).optional(),
+    createdAt: zod.string().or(zod.date()).transform(getFromDate),
+    updatedAt: zod
+      .string()
+      .or(zod.date())
+      .optional()
+      .transform((value) => value && getFromDate(value)),
+    section: zod.string(),
+    tags: zod.array(zod.string()).default([]),
+  }),
 });
 
-export const collections = { posts };
+const stuff = defineCollection({
+  type: 'data',
+  schema: zod.object({
+    title: zod.string().min(MIN),
+    description: zod.string().min(MIN),
+    sticky: zod.boolean().default(false),
+    link: zod.string().min(MIN),
+    tag: zod.enum(['code', 'article', 'link', 'video']),
+    date: zod.string().or(zod.date()).transform(getFromDate),
+  }),
+});
+
+export const collections = { texts, stuff };

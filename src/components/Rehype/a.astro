@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = Omit<HTMLAttributes<'a'>, 'class:list' | 'href' | 'target' | 'rel'> & { href?: string | URL };
+
+const { href, class: className, ...props } = Astro.props;
+
+const hrefStr = href?.toString();
+const isExternal = !hrefStr?.startsWith('/');
+---
+
+<a
+  href={hrefStr}
+  target={isExternal ? '_blank' : null}
+  rel={isExternal ? 'noopener noreferrer' : null}
+  class:list={[isExternal ? 'text-yellow-500 hover:text-yellow-400' : 'text-green-500 hover:text-green-400', className]}
+  {...props}
+>
+  <slot />
+</a>

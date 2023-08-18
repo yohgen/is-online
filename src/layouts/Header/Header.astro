@@ -1,0 +1,50 @@
+---
+import Link from '~/components/Link.astro';
+
+import NavButton from './Nav/NavButton.astro';
+import NavMenu from './Nav/NavMenu.astro';
+import WhiteBar from './WhiteBar.astro';
+---
+
+<header
+  class='sticky top-0 z-50 flex w-full flex-col items-center border-b-[1px] border-b-neutral-400 bg-black bg-opacity-50 font-optician text-5xl/[3rem] backdrop-blur backdrop-saturate-200'
+>
+  <nav class='my-2 flex h-12 w-full max-w-screen-lg flex-nowrap items-center px-4'>
+    <Link
+      class='group/animate group/link flex h-full flex-nowrap justify-start align-middle'
+      href='/'
+      aria-label='Navigate to Home Page'
+    >
+      <div class='flex flex-nowrap gap-0.5'>
+        {
+          [...Array(4)].map((_, idx) => (
+            <WhiteBar class={idx % 2 === 0 ? 'mt-1 animate-wave-up' : 'mb-1 animate-wave-down'} />
+          ))
+        }
+      </div>
+      <span
+        class='ml-0 max-w-0 overflow-hidden transition-[margin,max-width,visibility] group-hover/link:text-green-400 max-sm:invisible md:ml-4 md:max-w-full'
+      >
+        jørgen tau
+      </span>
+    </Link>
+    <div class='flex-1 justify-end flex flex-nowrap items-center gap-0 max-w-0 max-xs:invisible xs:gap-10 xs:max-w-full overflow-hidden transition-[gap,max-width,visibility]'>
+      <Link
+        class='hover:text-indigo-400'
+        href='/blog'
+        aria-label='Navigate to Blog Page'
+      >
+        blog
+      </Link>
+      <Link
+        class='hover:text-orange-400'
+        href='/stuff'
+        aria-label='Navigate to Stuff Page'
+      >
+        stuff
+      </Link>
+    </div>
+    <NavButton />
+  </nav>
+  <NavMenu />
+</header>

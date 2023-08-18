@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+
+export type Props<T extends HTMLTag = 'div', TInner extends HTMLTag = 'div', TVertex extends HTMLTag = 'span'> = Omit<HTMLAttributes<T>, 'class:list'> & {
+  tag?: T;
+  children?: any;
+  inner?: Omit<HTMLAttributes<TInner>, 'class:list'> & { tag?: TInner };
+	vertex?: Omit<HTMLAttributes<TVertex>, 'class:list'> & { tag?: TVertex };
+};
+
+const { tag: Tag = 'div', class: className, inner, vertex, ...props } = Astro.props;
+const { tag: InnerTag = 'div', class: innerClassName, ...innerProps } = inner ?? {};
+const { tag: VertexTag = 'span', class: vertexClassName, ...vertexProps } = vertex ?? {};
+---
+
+<Tag
+  class:list={['grid grid-cols-[1rem_1fr_1rem] grid-rows-[1rem_1fr_1rem] group', className]}
+  {...props as any}
+>
+  <VertexTag
+    aria-hidden='true'
+		class:list={['w-2 aspect-square border-white border-t-2 border-l-2 row-start-1 col-start-1 row-end-2 col-end-2 self-start justify-self-start group-hover:w-4 transition-[width,height]', vertexClassName]}
+		{...vertexProps as any}
+  />
+  <VertexTag
+    aria-hidden='true'
+		class:list={['w-2 aspect-square border-white border-t-2 border-r-2 row-start-1 col-start-3 row-end-2 col-end-4 self-start justify-self-end group-hover:w-4 transition-[width,height]', vertexClassName]}
+		{...vertexProps as any}
+  />
+  <InnerTag
+    class:list={['row-start-2 col-start-2 row-end-3 col-end-3', innerClassName]}
+    {...innerProps as any}
+  >
+    <slot />
+  </InnerTag>
+  <VertexTag
+    aria-hidden='true'
+		class:list={['w-2 aspect-square border-white border-b-2 border-l-2 row-start-3 col-start-1 row-end-4 col-end-2 self-end justify-self-start group-hover:w-4 transition-[width,height]', vertexClassName]}
+		{...vertexProps as any}
+	/>
+  <VertexTag
+    aria-hidden='true'
+		class:list={['w-2 aspect-square border-white border-b-2 border-r-2 row-start-3 col-start-3 row-end-4 col-end-4 self-end justify-self-end group-hover:w-4 transition-[width,height]', vertexClassName]}
+		{...vertexProps as any}
+	/>
+</Tag>

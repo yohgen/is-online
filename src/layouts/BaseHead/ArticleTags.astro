@@ -1,0 +1,28 @@
+---
+import { DateRepresentation, formatIsoDate } from '~/shared/server';
+
+export type Props = {
+  createdAt: DateRepresentation,
+  updatedAt?: DateRepresentation,
+  section: string,
+  tags: string[],
+};
+
+const { createdAt, updatedAt, section, tags } = Astro.props;
+---
+
+<!-- Article -->
+<meta property='article:author' content={Astro.site} />
+<meta
+  property='article:published_time'
+  content={formatIsoDate(createdAt)}
+/>
+{updatedAt && (<meta
+  property='article:modified_time'
+  content={formatIsoDate(updatedAt)}
+/>)}
+<meta property='article:section' content={section} />
+{!!tags.length && tags.map((tag) => (<meta
+  property='article:tag'
+  content={tag}
+/>))}

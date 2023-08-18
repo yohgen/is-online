@@ -1,0 +1,7 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = Omit<HTMLAttributes<'span'>, 'class:list'>;
+---
+
+<span aria-hidden='true' class:list={['w-3 bg-white animate-pause group-hover/animate:animate-run', Astro.props.class]} />

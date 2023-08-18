@@ -1,0 +1,12 @@
+<button
+  id='nav-button'
+  class='max-w-full flex-1 overflow-hidden text-right transition-[margin,max-width,visibility] xs:invisible xs:max-w-0'
+>
+  nav
+</button>
+
+<script>
+  import { navState, button } from './clickOutside';
+
+  button.addEventListener('click', () => navState.set(!navState.get()).trigger());
+</script>

@@ -1,0 +1,48 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+
+import DefaultLayout from '~/layouts/BaseLayout.astro';
+import HeroCanvas from '~/components/Canvas/HeroCanvas.astro';
+import Card from '~/components/Card.astro';
+import Date from '~/components/Date.astro';
+import { components } from '~/components/Rehype/index.astro';
+
+export type Props = CollectionEntry<'texts'>;
+
+export const getStaticPaths = async () => {
+  const texts = await getCollection('texts');
+  return texts.map((text) => ({ params: { slug: text.slug }, props: text }));
+};
+
+const { data, render } = Astro.props;
+const { Content } = await render();
+---
+
+<DefaultLayout {...data}>
+  <HeroCanvas class='aspect-video w-full sm:aspect-auto sm:h-80 md:h-96' src={`/hero/${data.image}`} alt={data.imageAlt} />
+  <main class='mx-auto grid w-full max-w-screen-lg justify-items-center'>
+    <Card class='mt-0 w-full bg-black bg-opacity-50 p-4 backdrop-blur backdrop-saturate-200 sm:-mt-20'>
+      <h1 class='text-center font-optician text-3xl 2xs:text-4xl sm:text-5xl lg:text-6xl leading-none text-inherit mb-1 xs:mb-3 md:mb-5'>
+        {data.title}
+      </h1>
+      <div class='flex flex-nowrap items-center justify-between gap-6 text-sm sm:text-base md:gap-10'>
+        <ul class='overflow hidden xs:flex h-5 flex-row flex-wrap gap-1 overflow-clip sm:h-6'>
+          <li class='mr-1 rounded bg-white px-1 text-black'>{data.section}</li>
+          {!!data.tags.length &&
+            data.tags.map((tag) => <li class='mx-1 hidden whitespace-nowrap md:inline'>{tag}</li>)}
+        </ul>
+        <address class='whitespace-normal xs:whitespace-nowrap not-italic'>
+          <span class='hidden sm:inline'>By: </span>
+          {data.author}
+        </address>
+        <div class='whitespace-nowrap'>
+          <span class='hidden sm:inline'>{data.updatedAt ? 'Published' : 'Updated'}: </span>
+          <Date date={data.updatedAt ?? data.createdAt} />
+        </div>
+      </div>
+    </Card>
+    <article class='p-4 pt-0 w-full min-w-0'>
+      <Content components={components} />
+    </article>
+  </main>
+</DefaultLayout>

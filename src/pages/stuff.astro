@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+
+import DefaultLayout from '~/layouts/BaseLayout.astro';
+import Card from '~/components/Card.astro';
+import Link from '~/components/Link.astro';
+import Date from '~/components/Date.astro';
+import { stuffSorter } from '~/shared/server';
+
+const entries = (await getCollection('stuff')).sort(stuffSorter);
+
+export const title = 'Stuff';
+export const ogTitle = "You won't find better stuff";
+export const description = 'Like HackerNews, but without comments';
+---
+
+<DefaultLayout title={title} description={description}>
+  <main
+    class='grid w-full max-w-screen-lg flex-1 grid-cols-1 content-start justify-items-center gap-2 p-2 sm:grid-cols-2 md:grid-cols-3 md:gap-4 md:p-4 lg:gap-8'
+  >
+    <h1
+      class='self-center text-center font-optician text-xl 2xs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl'
+    >
+      the good stuff
+    </h1>
+    {
+      entries.map(({ data }) => {
+        const parts = data.title.split(' ');
+        const lastPart = parts.pop()!;
+
+        return (
+          <Card
+            class='w-full bg-neutral-950 p-4'
+            inner={{ tag: 'article', class: 'flex flex-col justify-start' }}
+          >
+            <div class='mb-2 flex h-4 w-full flex-wrap items-center gap-0 text-[0.6rem]/[0.8rem] font-light xs:gap-1 sm:gap-2'>
+              <Date class='mr-1 text-xs text-neutral-400 xs:mr-2' date={data.date} />
+              <span class='rounded bg-neutral-400 px-1 text-black'>{data.tag}</span>
+            </div>
+            <Link href={data.link} class='text-orange-500 hover:text-orange-400'>
+              <h2 class='font-optician text-2xl leading-none text-inherit'>
+                {data.sticky && (<span title='sticky' aria-hidden='true' class='select-none'>[@] </span>)}
+                {parts.join(' ')}{' '}
+                <span class='whitespace-nowrap'>
+                  {lastPart}{' '}
+                  <svg
+                    class='inline aspect-square h-5 p-1 align-middle text-inherit select-none'
+                    aria-hidden='true'
+                    fill='none'
+                    viewBox='0 0 12 10'
+                  >
+                    <path
+                      stroke='currentColor'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='m7 9 4-4-4-4M1 9l4-4-4-4'
+                    />
+                  </svg>
+                </span>
+              </h2>
+            </Link>
+            <p class='line-clamp-3 overflow-clip text-ellipsis text-sm text-neutral-400 sm:text-base'>
+              {data.description}
+            </p>
+          </Card>
+        );
+      })
+    }
+  </main>
+</DefaultLayout>

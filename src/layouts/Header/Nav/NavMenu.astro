@@ -1,0 +1,47 @@
+---
+import Link from '~/components/Link.astro';
+---
+
+<nav
+  id='nav-menu'
+  class='invisible flex max-h-0 w-full max-w-5xl flex-col overflow-hidden transition-[margin,max-height,visibility]'
+>
+  <Link
+    href='/blog'
+    class='invisible h-full max-h-0 w-full border-t-[1px] border-t-neutral-400 px-4 py-0 transition-[padding,max-height,visibility] hover:text-neutral-400'
+  >
+    blog
+  </Link>
+  <Link
+    href='/stuff'
+    class='invisible h-full max-h-0 w-full border-t-[1px] border-t-neutral-400 px-4 py-0 transition-[padding,max-height,visibility] hover:text-neutral-400'
+  >
+    stuff
+  </Link>
+</nav>
+
+<script>
+  import { navState, menu } from './clickOutside';
+
+  const anchorTxt = menu.children[0]!;
+  const anchorEtc = menu.children[1]!;
+
+  const MENU_CLOSED = menu.className;
+  const MENU_OPEN = 'flex max-h-full w-full max-w-5xl flex-col overflow-hidden transition-[margin,max-height,visibility]';
+
+  const A_CLOSED = anchorTxt.className;
+  const A_OPEN = 'h-full max-h-16 w-full border-t-[1px] border-t-neutral-400 px-4 py-2 transition-[padding,max-height,visibility] hover:text-neutral-400';
+
+  navState.sub((isNavOpen) => {
+    if (isNavOpen) {
+      menu.className = MENU_OPEN;
+      anchorTxt.className = A_OPEN;
+      anchorEtc.className = A_OPEN;
+
+    } else {
+      menu.className = MENU_CLOSED;
+      anchorTxt.className = A_CLOSED;
+      anchorEtc.className = A_CLOSED;
+    }
+  });
+</script>

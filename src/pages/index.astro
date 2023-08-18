@@ -1,11 +1,33 @@
 ---
-import DefaultLayout from '~/layouts/DefaultLayout.astro';
+import FullScreenLayout from '~/layouts/FullScreenLayout.astro';
+import Link from '~/components/Link.astro';
+import { vert, frag } from '~/shared/shaders/index';
+import { DESCRIPTION, FULL_TITLE } from '!config';
+
+export const title = FULL_TITLE;
+export const ogTitle = "Click, you won't, punk";
+export const description = DESCRIPTION;
 ---
 
-<DefaultLayout class='bg-black -z-10 h-screen flex justify-center items-center text-white p-4'>
-	<main class='max-w-lg z-10'>
-		<h1 class='text-2xl font-bold'>⏳ Come back later</h1>
-		<h2 class='text-xl'>👁️ Nothing to see here... yet</h2>
-		<p>Your ⚡ electric 🧙 wizard is working hard on this one <span title='not really...'>🧿</span></p>
-	</main>
-</DefaultLayout>
+<FullScreenLayout
+  title={title}
+  description={description}
+  vert={vert}
+  frag={frag}
+  alt='A 3D monitor with an animated image on the screen'
+>
+  <p class='text-justify text-sm sm:text-base md:text-lg'>
+    There is a fifth dimension beyond that which is known to man. It is a dimension as vast as space
+    and as timeless as <Link
+      title='a.k.a. division by zero'
+      aria-label='Navigate to the JS Infinity entry on MDN'
+      class='text-yellow-500 hover:text-yellow-400'
+      href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity'
+    >Infinity</Link>. It is the middle ground between light and shadow, between science and superstition, and it
+    lies between the pit of human fears and the summit of their knowledge. This is the dimension of
+    imagination. It is an area which we call...
+  </p>
+  <h2 class='text-center font-optician text-[1.75rem]/[1.75rem] sm:text-[2rem]/[2rem] md:text-[2.5rem]/[2.5rem]'>
+    the web dev zone
+  </h2>
+</FullScreenLayout>

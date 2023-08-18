@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = Omit<HTMLAttributes<'p'>, 'class:list'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<p class:list={['my-4 text-sm text-neutral-100 md:text-base', className]} {...props}>
+  <slot />
+</p>

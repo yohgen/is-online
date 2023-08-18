@@ -1,10 +1,51 @@
 ---
-import DefaultLayout from '~/layouts/DefaultLayout.astro';
+import FullScreenLayout from '~/layouts/FullScreenLayout.astro';
+import Link from '~/components/Link.astro';
+import { vert, frag } from '~/shared/shaders/404';
+
+export const title = '404';
+export const ogTitle = "Don't tell anybody, it's a secret";
+export const description = "How did you find me, it's a secret page!";
 ---
 
-<DefaultLayout class='bg-black h-screen flex justify-center items-center text-white p-4'>
-	<main class='max-w-lg'>
-		<h1 class='text-2xl font-bold'>👀 404</h1>
-		<p>Nothingness</p>
-	</main>
-</DefaultLayout>
+<FullScreenLayout
+  title={title}
+  description={description}
+  vert={vert}
+  frag={frag}
+  alt='A 3D monitor with an animated image on the screen'
+>
+  <h1 class='text-center font-optician text-[1.75rem]/[1.75rem] sm:text-[2rem]/[2rem] md:text-[2.5rem]/[2.5rem]'>
+    page 404
+  </h1>
+  <p class='text-justify text-sm sm:text-base md:text-lg'>
+    Is it <Link
+      title='Home Page'
+      aria-label='Navigate to Home Page'
+      class='text-yellow-500 hover:text-yellow-400'
+      href='/'
+    >me</Link> you are looking for?...
+  </p>
+</FullScreenLayout>
+
+<script>
+  setTimeout(() => {
+    const SPLITTER = ' | ';
+    const titlePostfix = document.title.split(SPLITTER)[1]!;
+
+    const SPACE = ' ';
+    const headingEl = document.body.querySelector('h1')!;
+    const headingPrefix = headingEl.textContent!.split(SPACE)[0]!;
+
+    let change = 1;
+    let value = 404;
+    const limit = value;
+
+    setInterval(() => {
+      if (limit - Math.abs(value) === 0) change = -change;
+      value += change
+      document.title = `${value}${SPLITTER}${titlePostfix}`;
+      headingEl.textContent = `${headingPrefix}${SPACE}${value}`;
+    }, 1000);
+  }, 2000);
+</script>

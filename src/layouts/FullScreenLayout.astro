@@ -1,0 +1,34 @@
+---
+import Card from '~/components/Card.astro';
+import ShaderCanvas from '~/components/Canvas/ShaderCanvas.astro';
+
+import BaseLayout, { Props as BaseLayoutProps } from './BaseLayout.astro';
+
+export type Props = BaseLayoutProps & { vert: string; frag: string; alt?: string; children: any };
+
+const { vert, frag, alt, ...props } = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <main class='relative grid w-full flex-1 items-center'>
+    <ShaderCanvas vert={vert} frag={frag} alt={alt} class='absolute left-0 top-0 h-full w-full' />
+    <Card
+      id='card'
+      class='z-10 m-auto w-full max-w-screen-md p-4 bg-black bg-opacity-75 backdrop-blur backdrop-saturate-200'
+      inner={{ tag: 'main', class: 'p-1 md:p-2 flex flex-col gap-1 md:gap-2 items-center' }}
+    >
+      <slot />
+    </Card>
+  </main>
+</BaseLayout>
+
+<script>
+  import { grabState, tweenState } from '~/shared/canvas';
+
+  const HIDDEN = 'hidden';
+
+  const card = document.body.querySelector('#card')!;
+
+  grabState.sub((grab) => grab.isActive && card.classList.add(HIDDEN));
+  tweenState.sub((tween) => tween.isActive && card.classList.remove(HIDDEN));
+</script>
