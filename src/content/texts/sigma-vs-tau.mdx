@@ -39,7 +39,7 @@ button.addEventListener('click', () => dropdown.classList.toggle('.hidden'));
 document.body.addEventListener('click', (event: MouseEvent) => {
   const target = event.target as Node;
   if (button.contains(target) || dropdown.contains(target)) return;
-  dropdown.classList.remove('.hidden');
+  dropdown.classList.add('.hidden');
 });
 ```
 
